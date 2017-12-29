@@ -1321,7 +1321,7 @@
 
 @implementation RMStoreContentDownloaderSuccess
 
-- (void)downloadContentForTransaction:(SKPaymentTransaction *)transaction success:(void (^)())successBlock progress:(void (^)(float))progressBlock failure:(void (^)(NSError *))failureBlock
+- (void)downloadContentForTransaction:(SKPaymentTransaction *)transaction success:(void (^)(void))successBlock progress:(void (^)(float))progressBlock failure:(void (^)(NSError *))failureBlock
 {
     if (successBlock) successBlock();
 }
@@ -1330,7 +1330,7 @@
 
 @implementation RMStoreContentDownloaderProgress
 
-- (void)downloadContentForTransaction:(SKPaymentTransaction *)transaction success:(void (^)())successBlock progress:(void (^)(float))progressBlock failure:(void (^)(NSError *))failureBlock
+- (void)downloadContentForTransaction:(SKPaymentTransaction *)transaction success:(void (^)(void))successBlock progress:(void (^)(float))progressBlock failure:(void (^)(NSError *))failureBlock
 {
     if (progressBlock) progressBlock(self.progress);
 }
@@ -1339,7 +1339,7 @@
 
 @implementation RMStoreContentDownloaderFailure
 
-- (void)downloadContentForTransaction:(SKPaymentTransaction *)transaction success:(void (^)())successBlock progress:(void (^)(float))progressBlock failure:(void (^)(NSError *))failureBlock
+- (void)downloadContentForTransaction:(SKPaymentTransaction *)transaction success:(void (^)(void))successBlock progress:(void (^)(float))progressBlock failure:(void (^)(NSError *))failureBlock
 {
     if (failureBlock) failureBlock(self.error);
 }
@@ -1348,7 +1348,7 @@
 
 @implementation RMStoreReceiptVerificatorSuccess
 
-- (void)verifyTransaction:(SKPaymentTransaction *)transaction success:(void (^)())successBlock failure:(void (^)(NSError *))failureBlock
+- (void)verifyTransaction:(SKPaymentTransaction *)transaction success:(void (^)(void))successBlock failure:(void (^)(NSError *))failureBlock
 {
     if (successBlock) successBlock();
 }
@@ -1357,7 +1357,7 @@
 
 @implementation RMStoreReceiptVerificatorFailure
 
-- (void)verifyTransaction:(SKPaymentTransaction *)transaction success:(void (^)())successBlock failure:(void (^)(NSError *))failureBlock
+- (void)verifyTransaction:(SKPaymentTransaction *)transaction success:(void (^)(void))successBlock failure:(void (^)(NSError *))failureBlock
 {
     if (failureBlock) failureBlock(nil);
 }
@@ -1366,7 +1366,7 @@
 
 @implementation RMStoreReceiptVerificatorUnableToComplete
 
-- (void)verifyTransaction:(SKPaymentTransaction *)transaction success:(void (^)())successBlock failure:(void (^)(NSError *))failureBlock
+- (void)verifyTransaction:(SKPaymentTransaction *)transaction success:(void (^)(void))successBlock failure:(void (^)(NSError *))failureBlock
 {
     NSError *error = [NSError errorWithDomain:RMStoreErrorDomain code:RMStoreErrorCodeUnableToCompleteVerification userInfo:nil];
     if (failureBlock) failureBlock(error);
